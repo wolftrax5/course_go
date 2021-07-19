@@ -67,4 +67,25 @@ func main() {
 	for i, par := range listaNumerosPares {
 		fmt.Printf("posicion %d número par: %d \n", i, par)
 	}
+
+	// IF
+	const condition1 int8 = 1
+	const condition2 int8 = 2
+
+	if condition1 == 1 {
+		fmt.Println("ES 1")
+	} else {
+		fmt.Println("No es 1")
+	}
+
+	// with and
+	if condition1 == 1 && condition2 == 2 {
+		fmt.Println("Verdad")
+	} else {
+		fmt.Println("Falso")
+	}
+	// with or
+	if condition1 == 0 || condition2 == 2 {
+		fmt.Println("Verdad")
+	}
 }
