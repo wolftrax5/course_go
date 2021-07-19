@@ -26,6 +26,20 @@ func dobleTipeReturn() (c string, d int) {
 	return "hello", 200
 }
 
+func esPar(num int) bool {
+	result := num%2 == 0
+	if result {
+		fmt.Println(num, "es par")
+	} else {
+		fmt.Println(num, "NO es par")
+	}
+	return result
+}
+
+func validUser(username, pass string) bool {
+	return username == "kuro" && pass == "kuro"
+}
+
 func main() {
 	normalFunction("Hello World")
 	tripleArgument(1, 2, "hola")
