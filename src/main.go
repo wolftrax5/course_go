@@ -2,87 +2,42 @@ package main
 
 import "fmt"
 
+func normalFunction(message string) {
+	fmt.Println(message)
+}
+
+// se declara que el argumento a y b son del mismo typo de dato
+// tambien puede ser a int, b int, pero no se recomienda
+func tripleArgument(a, b int, c string) {
+	fmt.Println(a, b, c)
+}
+
+// declaramos el tipo que se retornara
+func returnValue(a int) int {
+	return a * 2
+}
+
+// retornas mas de 1 dato
+func dobleReturn(a int) (c, d int) {
+	return a, a * 2
+}
+
+func dobleTipeReturn() (c string, d int) {
+	return "hello", 200
+}
+
 func main() {
-	// Declaracion de Constantes
-	const PI float64 = 3.14
-
-	fmt.Println("Valor de PI", PI)
-	// Declaracion de Variables Enteras
-	base := 12          // los : nos indican que no a sido declarada
-	var altura int = 14 // se declara junto con su tipo y asinga
-	var area int        // solo se declara
-
-	fmt.Println("base:", base, "altura:", altura, "area:", area)
-
-	// Zero values
-	var a int     // 0
-	var b float64 // 0
-	var c string  // blank space
-	var d bool    // false
-
-	fmt.Println(a, b, c, d)
-
-	// area Cuadrado
-	const baseCuadrado = 10 // go asigna el valor y el tipo en vase al valor
-	areaCuadrado := baseCuadrado * baseCuadrado
-	fmt.Println("Area cuadrado:", areaCuadrado)
-
-	// Aritmetica
-	x := 10
-	y := 50
-	// Suma
-	result := x + y // usamos los : por que a sido declarada anteriormente
-	fmt.Println(x, "+", y, "=", result)
-	//resta
-	result = x - y // no usamos los : ya fue declarada
-	fmt.Println(x, "-", y, "=", result)
-	// multiplicacion
-	result = x * y
-	fmt.Println(x, "*", y, "=", result)
-	// Divicion
-	result = y / x
-	fmt.Println(y, "/", x, "=", result)
-	// Modulo (reciduo)
-	result = y % x
-	fmt.Println(y, "/", x, "Modulo(residuo):", result)
-	// incremental
-	x++
-	fmt.Println("incremental", x)
-	// decremental
-	x--
-	fmt.Println("decremental", x)
-
-	height := 40
-	var rArea = base * height
-	fmt.Println("Area del rectangulo: ", rArea)
-
-	higher := 90
-	less := 45
-	size := 55
-	var tArea = ((higher + less) * size / 2)
-	fmt.Println("Area del trapecio: ", tArea)
-
-	radio := 45.5
-	const pi = 3.14
-	var cArea = (radio * radio) * pi
-	fmt.Println("Area del circulo: ", cArea)
-	// Uso de FMy
-	helloMessage := "Hello"
-	worldMessage := "World"
-	// imprimir una line despues de otra
-	fmt.Println(helloMessage, worldMessage)
-	fmt.Println(helloMessage, worldMessage)
-	// printF
-	const nombre string = "Curso"
-	const cursos uint16 = 500
-	// imprimimos las variables %d digitos, %s strings
-	// %v cuando no conocemos el tipo de dato
-	// %T para imprimir el tipo de dato
-	fmt.Printf("Veremos mas de %d %s\n", cursos, nombre)
-	// conoce tipos de datos
-	fmt.Printf("cursos type: %T \n", cursos)
-	// Sprintf
-	// genera un string pero no lo imprime en consola
-	message := fmt.Sprintf("Veremos mas de %d %s", cursos, nombre)
-	fmt.Println("El mensaje:", message)
+	normalFunction("Hello World")
+	tripleArgument(1, 2, "hola")
+	value := returnValue(2)
+	fmt.Println("value", value)
+	// usando el orden de retorno asingamos los resultados
+	value1, value2 := dobleReturn(2)
+	fmt.Println("value1:", value1, "value2", value2)
+	// suponiendo que solo necesites un solo valor
+	// podemos usar  _ el piso que descarta el valor
+	mensage, _ := dobleTipeReturn()
+	fmt.Println("Solo el mensaje:", mensage)
+	_, valor := dobleTipeReturn()
+	fmt.Println("Solo el valor:", valor)
 }
