@@ -40,4 +40,31 @@ func main() {
 	fmt.Println("Solo el mensaje:", mensage)
 	_, valor := dobleTipeReturn()
 	fmt.Println("Solo el valor:", valor)
+
+	// FOR
+	for i := 0; i <= 10; i++ {
+		fmt.Println(i)
+	}
+	// For while
+	var counter int8 = 0
+	// El for continuara hasta cumplir la condicion
+	for counter <= 5 {
+		fmt.Println("counter:", counter)
+		counter++ // actualizamos la condicion de paro
+	}
+	// For Forever
+	/*
+		Si no se agregan la condicion correra por siempre
+		counterForever := 0
+		for {
+			fmt.Println(counterForever)
+			counterForever ++
+		}
+	*/
+	// Fore range
+	// cuando se tiene una colección de un objeto
+	listaNumerosPares := []int{2, 4, 6, 8, 10, 12, 14, 16, 18, 20}
+	for i, par := range listaNumerosPares {
+		fmt.Printf("posicion %d número par: %d \n", i, par)
+	}
 }
