@@ -66,5 +66,23 @@ func main() {
 	const pi = 3.14
 	var cArea = (radio * radio) * pi
 	fmt.Println("Area del circulo: ", cArea)
-
+	// Uso de FMy
+	helloMessage := "Hello"
+	worldMessage := "World"
+	// imprimir una line despues de otra
+	fmt.Println(helloMessage, worldMessage)
+	fmt.Println(helloMessage, worldMessage)
+	// printF
+	const nombre string = "Curso"
+	const cursos uint16 = 500
+	// imprimimos las variables %d digitos, %s strings
+	// %v cuando no conocemos el tipo de dato
+	// %T para imprimir el tipo de dato
+	fmt.Printf("Veremos mas de %d %s\n", cursos, nombre)
+	// conoce tipos de datos
+	fmt.Printf("cursos type: %T \n", cursos)
+	// Sprintf
+	// genera un string pero no lo imprime en consola
+	message := fmt.Sprintf("Veremos mas de %d %s", cursos, nombre)
+	fmt.Println("El mensaje:", message)
 }
