@@ -15,6 +15,17 @@ func New(rm, dsk uint32, brn string) Pc {
 	return customPc
 }
 
+/*
+La estructura de datos " Struct "
+tiene un método llamado " String " ,
+que podemos sobrescribir para personalizar
+la salida a consola de los datos del struct.
+tiene que llamrse forsosamente "String"
+*/
+func (myPc Pc) String() string {
+	return fmt.Sprintf("Tengo %d GB RAM, %d GB Disco y es una %s", myPc.ram, myPc.disk, myPc.brand)
+}
+
 func (myPC Pc) FormatPrint() {
 	fmt.Printf("Esta pc marca %s cuenta con una ram de %dGB y un disco de %dGB.\n", myPC.brand, myPC.ram, myPC.disk)
 }

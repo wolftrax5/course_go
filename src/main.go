@@ -26,4 +26,7 @@ func main() {
 	fmt.Println("Se duplica la ram")
 	myPc.DuplicateRAM()
 	myPc.FormatPrint()
+
+	// usando el output Personalizado
+	fmt.Println(myPc)
 }
