@@ -1,18 +1,29 @@
 package main
 
-// nombre a un lado de una importacion funciona
-// como un alias
 import (
+	pc "course_go/src/mypc"
 	"fmt"
-
-	pk "course_go/src/mypackage"
 )
 
 func main() {
-	var myCar pk.CarPublic
-	myCar.Brand = "Ferrai"
-	myCar.Year = 1999
-	fmt.Println(myCar)
+	a := 50
+	b := &a
+	// el & es para accder a le direccion
+	// de memoria
+	fmt.Println("b", b)
+	// y el * es para acceder al valor
+	// de la direccino de memoria
+	fmt.Println("*b", *b)
+	*b = 100
+	// cualquier modificacion a la direccion de memoria
+	// se modificara en todas sus referencias
+	fmt.Println("a", a)
 
-	pk.PrintMessage()
+	// ejemplo en un modulo
+	myPc := pc.New(12, 200, "HP")
+	myPc.SetRam(16)
+	myPc.FormatPrint()
+	fmt.Println("Se duplica la ram")
+	myPc.DuplicateRAM()
+	myPc.FormatPrint()
 }
