@@ -1,53 +1,51 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+	"time"
+)
 
-/*
-Si los structs que tenemos en el código tienen métodos
-que hacen algo en común
-(Cálculos, obtener data, etc),
-es posible ejecutar éstos métodos usando una interfaz,
-de esta forma evitamos hacer código por cada struct.
-*/
-type figuras2D interface {
-	area() float64 // tine que ser exactamente le nombre de la funcion
-}
-type cuadrado struct {
-	base float64
-}
-type rectangulo struct {
-	base   float64
-	altura float64
+func say(text string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	fmt.Println(text)
 }
 
-func (c cuadrado) area() float64 {
-	// ser repite el nombre pero no el tipo de dato acetado
-	// o la logica de ejecucion
-	return c.base * c.base
-}
-func (r rectangulo) area() float64 {
-	return r.base * r.altura
-}
-
-func calcular(f figuras2D) {
-	fmt.Println("Area", f.area())
-}
-
+// la funcion main esta corriendo dentro de
+// una go rutine, una ves ejecutada muere
 func main() {
-	myCuadrado := cuadrado{base: 2}
-	myRectanculo := rectangulo{base: 2, altura: 4}
 	/*
-		el mejor punto de usar una interface
-		es cuando los structs comparten una misma funcion
-		para su reutilizacion
-	*/
-	calcular(myCuadrado)
-	calcular(myRectanculo)
+		Un WaitGroup espera a que una colección de goroutines
+		termine su ejecución.
+		Para esto se una la WaitGroup.Add()
+		( wg.add(1) en el ejemplo de la clase).
+		El número entero indica el número de goroutines
+		que debe esperar para finalizar
+		la ejecución de la goroutine principal.
 
-	// listas de interfaces
-	// por defecto go no hacepta slice de diferente tipos
-	// pero con interfaces podemos hacerlos
-	myInterface := []interface{}{"Hola", 121, 4.90}
-	// los ... destricitran cada uno delos elementos
-	fmt.Println(myInterface...)
+		Cada vez que una goroutine termina
+		su ejecución, llama el método Done().
+		Esto hace que el contador del WaitGroup se
+		reduzca.
+		Cuando el contador llegue a zero la rutina principal
+		continuará su ejecución.
+
+		La función wait() bloquea la rutina principal
+		hasta que todas las demás rutinas del grupo hayan terminado.
+	*/
+	var wg sync.WaitGroup
+
+	fmt.Println("Hello")
+	wg.Add(1)
+	// para manejar las go runites es necesario
+	// usar la keyword go antes de la funcion
+	go say("World", &wg)
+
+	wg.Wait()
+
+	go func(text string) {
+		fmt.Println(text)
+	}("Adios")
+
+	time.Sleep(time.Second * 1)
 }
